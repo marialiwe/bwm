@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Camps extends Model
+class Camp extends Model
 {
     use HasFactory, SoftDeletes;
+
+    public $camps = "camps";
 
     protected $fillable = ['title', 'price'];
 }

@@ -24,7 +24,7 @@
                 @auth
                 <div class="d-flex user-logged nax-item dropdown no-arrow">
                     <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        Halo, {{ Auth::user()->name }} !
+                        Halo, {{ Auth::user()->name }}
                         <img src="{{ Auth::user()->avatar }}" class="user-photo" alt="">
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="right: 0; left: auto;">
                             <li>
