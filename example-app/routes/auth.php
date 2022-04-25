@@ -12,17 +12,20 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-                ->name('register');
+    Route::get('/register', [RegisteredUserController::class, 'create'])
+                    ->middleware('guest')            
+                    ->name('register');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::post('/register', [RegisteredUserController::class, 'store']);
 
-    Route::get('/login', [UserController::class, 'login'])->name('login');
+    Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
 
     Route::get('/login/admin', [AuthenticatedSessionController::class, 'create'])
-                ->name('login.admin');
+                    ->middleware('guest')            
+                    ->name('login.admin');
 
-    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('login', [AuthenticatedSessionController::class, 'store'])
+                    ->middleware('guest');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->name('password.request');
