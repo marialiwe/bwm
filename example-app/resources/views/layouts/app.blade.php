@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
 
 <head>
     <!-- Required meta tags -->
@@ -18,7 +20,6 @@
 </head>
 
 <body>
-
     @include('components.navbar')
 
     @yield('content')
