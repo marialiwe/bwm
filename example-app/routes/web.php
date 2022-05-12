@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\DashboardController as UserDashboard;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\CheckoutController as AdminCheckout;
+use App\Http\Controllers\Admin\DiscountController as AdminDiscount;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('/', function () {
 //socialite routes
 Route::get('sign-in-google', [UserController::class, 'google'])->name('user.login.google');
 Route::get('auth/google/callback', [UserController::class, 'handleProviderCallback'])->name('user.google.callback');
+
+// midtrans routes
+Route::get('payment/success', [CheckoutController::class, 'midtransCallback']);
+Route::post('payment/success', [CheckoutController::class, 'midtransCallback']);
 
 // Route::get('/dashboard', function () {
 //    return view('dashboard');
@@ -51,6 +56,9 @@ Route::middleware(['auth'])->group(function () {
     
     // admin checkout
     Route::post('checkout/{checkout}', [AdminCheckout::class, 'update'])->name('checkout.update');
+
+    // admin discount
+    Route::resource('discount', AdminDiscount::class);
 });
 });
 
